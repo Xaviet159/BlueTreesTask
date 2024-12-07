@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import TaskList from './taskList';
 import TaskForm from './taskForm';
-import { getTasks, createTask, updateTask} from '../services/http/taskAPIService';
+import calculatePriority from '../services/tools/priorityTool';
+import { getTasks, createTask, updateTask, deleteTask} from '../services/http/taskAPIService';
 
 const TodoApp = () => {
     const [tasks, setTasks] = useState([]);
@@ -66,21 +67,11 @@ const TodoApp = () => {
         console.error('Failed to update task:', error);
       }
     };
-
-    // info... => Fonction qui calcul le nombre de jour restant entre deux dates données.
-    const calculatePriority = (startDate, endDate) => {
-        if (!endDate) return 'basse'; // info... => Pas de date de fin = priorité basse
-
-        const start = new Date(startDate);
-        const end = new Date(endDate);
-        const difference = end - start;
-
-        // info... => Définition des priorité
-        if (difference <= 0) return 'forte'; 
-        const daysLeft = Math.ceil(difference / (1000 * 60 * 60 * 24));
-        if (daysLeft <= 3) return 'forte';
-        if (daysLeft <= 7) return 'moyenne'; 
-        return 'basse'; 
+    
+    //info... => Supprime une tâche
+    const handleDeleteTask = async (id) => {
+        await deleteTask(id);
+        setTasks(tasks.filter(task => task.id !== id));
     };
   
     return (
@@ -90,6 +81,7 @@ const TodoApp = () => {
             <TaskList
                 tasks={tasks}
                 onChange={handleChange}
+                onDeleteTask={handleDeleteTask}
             />
       </div>
     );

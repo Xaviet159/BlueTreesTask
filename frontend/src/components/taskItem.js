@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaTrash, FaCheckCircle, FaRegCircle, FaEdit, FaSave } from 'react-icons/fa';
+import { FaCheckCircle, FaRegCircle, FaEdit, FaSave, FaTrash } from 'react-icons/fa';
 
 const TaskItem = ({ task, onChange, onDeleteTask }) => {
   const [isEditing, setIsEditing] = useState(false);

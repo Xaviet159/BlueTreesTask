@@ -1,38 +1,224 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Centrage du composant */
+.todo-app {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+}
+
+/* Titre */
+.todo-app h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Liste des tâches */
+.task-list {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0;
+  list-style-type: none;
+}
+
+.task-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Texte des tâches */
+.task-list li span {
+  flex: 1;
+  text-align: left;
+  cursor: pointer;
+  text-decoration: none; /* Retire la décoration par défaut */
+  color: #555;
+  font-size: 1rem;
+}
+
+.task-list li span:hover {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+/* Icônes */
+.task-list li button {
+  background: none;
+  border: none;
+  color: #ff4d4d;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.task-list li button:hover {
+  color: #ff1a1a;
+}
+
+/* Formulaire d'ajout de tâche */
+.task-form {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.task-form input {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.task-form input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.task-form button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.task-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Conteneur de chaque tâche */
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Conteneur de chaque tâche */
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px; /* Marges internes généreuses */
+  margin-bottom: 15px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce pour la profondeur */
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 100%; /* Prend toute la largeur disponible */
+  max-width: 300px; /* Largeur maximale */
+  min-width: 300px;
+  margin-left: auto; /* Centre horizontalement */
+  margin-right: auto; /* Centre horizontalement */
+}
+
+.task-item:hover {
+  transform: scale(1.03); /* Légère mise en avant au survol */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Ombre accentuée */
+}
+
+/* Texte de la tâche */
+.task-title {
+  flex: 1; /* Prend toute la largeur restante */
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem; /* Texte légèrement plus grand */
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  text-decoration: none;
+  user-select: none; /* Empêche la sélection accidentelle */
+}
+
+.task-title.completed {
+  text-decoration: line-through;
+  color: #aaa; /* Couleur grise pour les tâches terminées */
+}
+
+/* Icônes */
+.icon {
+  margin-right: 15px;
+  font-size: 1.4rem; /* Icônes légèrement agrandies */
+  color: #555;
+}
+
+.completed-icon {
+  color: #4caf50; /* Vert pour les tâches terminées */
+}
+
+.icon:hover {
+  color: #007bff; /* Change légèrement la couleur au survol */
+}
+
+
+.delete-button {
+  background: none;
+  border: none;
+  color: #ff4d4d;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.delete-button:hover {
+  color: #ff1a1a;
+}
+
+.delete-button:focus {
+  outline: none; 
+}
+.task-form {
+  display: flex;
+  flex-direction: column; /* Aligne les inputs verticalement */
+  gap: 10px; /* Espacement entre les inputs */
+  max-width: 400px;
+  margin: 0 auto; /* Centre le formulaire */
+}
+
+.task-form input[type="text"],
+.task-form input[type="date"] {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: 100%; /* S'assure que l'input prend toute la largeur */
+}
+
+.task-form button {
+  padding: 10px;
+  background-color: #007bff;
   color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.task-form button:hover {
+  background-color: #0056b3;
 }

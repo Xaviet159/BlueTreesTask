@@ -38,6 +38,7 @@ demarrer serveur => npm start
 npx create-react-app frontend
 cd frontend
 npm install axios
+npm install react-icons
 
 insert into package.json votre environement avec le Backend
 ex:
