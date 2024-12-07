@@ -5,7 +5,7 @@
 - **Node.js** (v18 ou plus récent)
 - **PostgreSQL** (v16)
 
-### Étapes d'installation
+### Étapes d'installation BACKEND
 
 1. **Cloner le repository** :
 
@@ -31,3 +31,14 @@ PORT=3000
 npm run test
 
 demarrer serveur => npm start
+
+### Étapes d'installation FRONTEND
+
+
+npx create-react-app frontend
+cd frontend
+npm install axios
+
+insert into package.json votre environement avec le Backend
+ex:
+--> "proxy": "http://localhost:3000"
