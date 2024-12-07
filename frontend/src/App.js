@@ -1,9 +1,10 @@
 import './App.css';
+import TodoApp from './components/todoApp';
 
 function App() {
   return (
     <div className="App">
-      <h1>To-Do List</h1>
+      <TodoApp></TodoApp>
     </div>
   );
 }

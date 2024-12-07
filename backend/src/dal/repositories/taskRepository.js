@@ -3,7 +3,7 @@ const Task = require('../../models/task');
 
 const TaskRepository = {
     async getAll() {
-        const result = await db.query('SELECT * FROM tasks ORDER BY created_at ASC');
+        const result = await db.query('SELECT * FROM tasks');
         return result.rows.map(
             row => new Task(row.id, row.title, row.is_completed, row.created_at, row.end_date)
         );

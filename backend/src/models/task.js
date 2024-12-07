@@ -1,5 +1,5 @@
 class Task {
-    constructor(id, title, isCompleted = false, createdAt = new Date(), enDate){
+    constructor(id, title, isCompleted = false, createdAt = new Date(), endDate){
         this.id = id;
         this.title =title;
         this.isCompleted = isCompleted;
