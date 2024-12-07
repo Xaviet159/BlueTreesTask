@@ -30,8 +30,27 @@ const TaskRepository = {
     async delete(id) {
         const result = await db.query('DELETE FROM tasks WHERE id = $1 RETURNING *', [id]);
         return result.rowCount > 0;
-      }
+    },
 
-    // TODO Terminer CRUD !
+    async update(id, updates) {
+        console.log('Updating task in DB:', id, updates); // Log des données
+        const { title, isCompleted, endDate } = updates;
+      
+        try {
+          const result = await db.query(
+            `UPDATE tasks
+             SET title = $1,
+                 is_completed = $2, 
+                 end_date = $3
+             WHERE id = $4
+             RETURNING *`,
+            [title, isCompleted, endDate, id]
+          );
+          return result.rows[0];
+        } catch (error) {
+          console.error('Error in TaskRepository.update:', error.message); // Log l'erreur SQL
+          throw error;
+        }
+      }
 }
 module.exports = TaskRepository;

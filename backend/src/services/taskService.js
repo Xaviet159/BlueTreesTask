@@ -19,7 +19,11 @@ const TaskService = {
 
     async deleteTask(id) {
         return await TaskRepository.delete(id);
-      }
+    },
+
+    async updateTask(id, updates) {
+        return await TaskRepository.update(id, updates);
+    }
 };
 
 module.exports = TaskService;

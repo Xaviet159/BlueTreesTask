@@ -15,3 +15,8 @@ export const createTask = async (title, endDate) => {
 export const deleteTask = async (id) => {
   await axios.delete(`${API_URL}/${id}`);
 };
+
+export const updateTask = async (id, updates) => {
+  const response = await axios.put(`${API_URL}/${id}`, updates);
+  return response.data;
+};
