@@ -5,12 +5,11 @@
 - **Node.js** (v18 ou plus récent)
 - **PostgreSQL** (v16)
 
-### Étapes d'installation BACKEND
-
 1. **Cloner le repository** :
 
-   git clone https://github.com/votre-utilisateur/votre-repository.git
-   cd votre-repository/backend
+   git clone https://github.com/Xaviet159/BlueTreesTask.git
+
+### Étapes d'installation BACKEND
 
 2.	**Installer les dépendances** :
    npm install
@@ -30,10 +29,9 @@ PORT=3000
 
 npm run test
 
-demarrer serveur => npm start
+demarrer serveur => node app.js
 
 ### Étapes d'installation FRONTEND
-
 
 npx create-react-app frontend
 cd frontend
@@ -43,3 +41,5 @@ npm install react-icons
 insert into package.json votre environement avec le Backend
 ex:
 --> "proxy": "http://localhost:3000"
+
+Warning... => Attention config l'autorisation des route du backend au frontend avec les "cors"
