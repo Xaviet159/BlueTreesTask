@@ -1,26 +1,40 @@
-import React, { useEffect } from 'react';
-import { getTasks } from '../services/http/taskAPIService'; // Service pour récupérer les tâches
+import React, { useState, useEffect } from 'react';
+import TaskList from './taskList';
+import TaskForm from './taskForm';
+import { getTasks, createTask } from '../services/http/taskAPIService';
 
-const TestComponent = () => {
+const TodoApp = () => {
+  const [tasks, setTasks] = useState([]);
+
   useEffect(() => {
     const fetchTasks = async () => {
       try {
         const data = await getTasks();
-        console.log('Données récupérées de la base de données :', data);
+        setTasks(data);
       } catch (error) {
-        console.error('Erreur lors de la récupération des tâches :', error);
+        console.error('Failed to fetch tasks:', error);
       }
     };
-
     fetchTasks();
   }, []);
 
+  const handleAddTask = async (title) => {
+    try {
+      const newTask = await createTask(title);
+      setTasks((prevTasks) => [...prevTasks, newTask]);
+    } catch (error) {
+      console.error('Failed to create task:', error);
+    }
+  };
+
+
   return (
-    <div className="test-component">
-      <h1>Test de l'API</h1>
-      <p>Vérifiez la console pour les données récupérées.</p>
+    <div className="todo-app">
+      <h1>Todo List</h1>
+      <TaskForm onAddTask={handleAddTask} />
+      <TaskList tasks={tasks}/>
     </div>
   );
 };
 
-export default TestComponent;
+export default TodoApp;
