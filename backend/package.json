@@ -5,7 +5,8 @@
  "scripts": {
   "start": "node app.js",
   "dev": "nodemon app.js",
-  "test": "node src/config/testConnection.js"
+  "test": "node src/config/testConnection.js",
+  "migrate": "node src/dal/migrations/create_tasks_table.js"
 },
   "keywords": [],
   "author": "",
